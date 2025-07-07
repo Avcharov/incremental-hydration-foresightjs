@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Incremental Hydration with Foresight.js</h1>
+  <p>
+    Turn on hydration overlays toggle in Angular Devtools. Move your cursor across the grid. 
+  </p>
+  <div class="card-grid">
+    @for (card of cards; track card) {
+    <div class="card-wrapper">
+      
+      <div #cardPlaceholder>
+      @defer (hydrate when hydrationTriggers[$index]()) {
+        <app-hydrated-card [cardNumber]="card" />
+      }
+      @placeholder {
+        <div class="card placeholder">
+          Card {{ card }}
+        </div>
+      }
+    </div>
+  </div>
+    }
+  </div>
+</div>
