@@ -1,27 +1,29 @@
-# TestSsr
+# Angular Predictive Hydration with Foresight.js
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+An example Angular project demonstrating how to use [ForesightJS](https://foresightjs.com/) to predictively hydrate components. By tracking user behavior, it pre-hydrates components just before they are needed, resulting in a faster, more responsive UI.
 
-## Development server
+## Brief Logic
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1.  The application is server-rendered with lightweight placeholders for components.
+2.  On the client, **Foresight.js** monitors the user's mouse movements to predict which element they will interact with next.
+3.  When Foresight.js predicts an interaction, it executes a callback.
+4.  This callback updates an Angular `signal` tied to the `hydrate when` condition of an `@defer` block.
+5.  The signal change prompts Angular to hydrate the full component, making it interactive just in time for the user.
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run the Project
 
-## Build
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd <repository-name>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# 2. Install dependencies
+npm install
 
-## Running unit tests
+# 3. Run the application in SSR mode
+npm run start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Now, open your browser navigate to `http://localhost:4200` and oprn Angular Devtools and **turn on "Show hydration overlay" toggle**. You can monitor the console and use the Foresight.js devtools to see the predictive hydration in action
